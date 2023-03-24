@@ -6,8 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
+import com.mkiperszmid.habitsappcourse.navigation.NavigationHost
+import com.mkiperszmid.habitsappcourse.navigation.NavigationRoute
 import com.mkiperszmid.habitsappcourse.ui.theme.HabitsAppCourseTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +22,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Text(text = "Hola!")
+                    val navController = rememberNavController()
+                    NavigationHost(
+                        navHostController = navController,
+                        startDestination = NavigationRoute.Onboarding
+                    )
                 }
             }
         }

@@ -1,10 +1,10 @@
 package com.mkiperszmid.habitsappcourse.navigation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.mkiperszmid.habitsappcourse.onboarding.presentation.OnboardingScreen
 
 @Composable
 fun NavigationHost(
@@ -13,8 +13,9 @@ fun NavigationHost(
 ) {
     NavHost(navController = navHostController, startDestination = startDestination.route) {
         composable(NavigationRoute.Onboarding.route) {
-            // OnBoarding
-            Text(text = "Soy Onboaridng")
+            OnboardingScreen(onFinish = {
+                println("Termino el Onboarding!")
+            })
         }
     }
 }

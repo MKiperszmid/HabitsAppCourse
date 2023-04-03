@@ -14,9 +14,10 @@ import androidx.compose.ui.unit.dp
 fun HabitButton(
     text: String,
     modifier: Modifier = Modifier,
+    isEnabled: Boolean = true,
     onClick: () -> Unit
 ) {
-    Button(onClick = onClick, modifier = modifier, shape = RoundedCornerShape(8.dp)) {
+    Button(onClick = onClick, modifier = modifier, shape = RoundedCornerShape(8.dp), enabled = isEnabled) {
         Text(
             text = text,
             style = MaterialTheme.typography.bodyMedium.copy(

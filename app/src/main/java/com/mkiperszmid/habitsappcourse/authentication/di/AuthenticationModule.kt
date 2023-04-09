@@ -4,10 +4,7 @@ import com.mkiperszmid.habitsappcourse.authentication.data.matcher.EmailMatcherI
 import com.mkiperszmid.habitsappcourse.authentication.data.repository.AuthenticationRepositoryImpl
 import com.mkiperszmid.habitsappcourse.authentication.domain.matcher.EmailMatcher
 import com.mkiperszmid.habitsappcourse.authentication.domain.repository.AuthenticationRepository
-import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.LoginUseCases
-import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.LoginWithEmailUseCase
-import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.ValidateEmailUseCase
-import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.ValidatePasswordUseCase
+import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,6 +24,19 @@ object AuthenticationModule {
     @Singleton
     fun provideEmailMatcher(): EmailMatcher {
         return EmailMatcherImpl()
+    }
+
+    @Provides
+    @Singleton
+    fun provideSignupUseCases(
+        repository: AuthenticationRepository,
+        emailMatcher: EmailMatcher
+    ): SignupUseCases {
+        return SignupUseCases(
+            signupWithEmailUseCase = SignupWithEmailUseCase(repository),
+            validateEmailUseCase = ValidateEmailUseCase(emailMatcher),
+            validatePasswordUseCase = ValidatePasswordUseCase()
+        )
     }
 
     @Provides

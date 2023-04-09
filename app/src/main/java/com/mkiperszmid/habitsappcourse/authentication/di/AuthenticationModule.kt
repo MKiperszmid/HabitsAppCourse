@@ -51,4 +51,10 @@ object AuthenticationModule {
             validatePasswordUseCase = ValidatePasswordUseCase()
         )
     }
+
+    @Provides
+    @Singleton
+    fun provideGetUserIdUseCase(repository: AuthenticationRepository): GetUserIdUseCase {
+        return GetUserIdUseCase(repository)
+    }
 }

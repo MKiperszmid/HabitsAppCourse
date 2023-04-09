@@ -23,4 +23,8 @@ class AuthenticationRepositoryImpl : AuthenticationRepository {
             Result.failure(e)
         }
     }
+
+    override fun getUserId(): String? {
+        return Firebase.auth.currentUser?.uid
+    }
 }

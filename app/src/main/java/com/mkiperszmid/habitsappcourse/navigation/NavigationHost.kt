@@ -1,12 +1,12 @@
 package com.mkiperszmid.habitsappcourse.navigation
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.mkiperszmid.habitsappcourse.authentication.presentation.login.LoginScreen
 import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.SignupScreen
+import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeScreen
 import com.mkiperszmid.habitsappcourse.onboarding.presentation.OnboardingScreen
 
 @Composable
@@ -45,8 +45,7 @@ fun NavigationHost(
         }
 
         composable(NavigationRoute.Home.route) {
-            Text(text = "Esta es la home")
+            HomeScreen()
         }
     }
-    //
 }

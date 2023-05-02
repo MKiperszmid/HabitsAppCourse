@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.mkiperszmid.habitsappcourse.authentication.presentation.login.LoginScreen
 import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.SignupScreen
+import com.mkiperszmid.habitsappcourse.home.presentation.detail.DetailScreen
 import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeScreen
 import com.mkiperszmid.habitsappcourse.onboarding.presentation.OnboardingScreen
 
@@ -45,7 +46,19 @@ fun NavigationHost(
         }
 
         composable(NavigationRoute.Home.route) {
-            HomeScreen()
+            HomeScreen(onNewHabit = {
+                navHostController.navigate(NavigationRoute.Detail.route)
+            }, onSettings = {
+                    navHostController.navigate(NavigationRoute.Settings.route)
+                })
+        }
+
+        composable(NavigationRoute.Detail.route) {
+            DetailScreen(onBack = {
+                navHostController.popBackStack()
+            }, onSave = {
+                    navHostController.popBackStack()
+                })
         }
     }
 }

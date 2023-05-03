@@ -4,6 +4,7 @@ import com.mkiperszmid.habitsappcourse.home.domain.models.Habit
 import com.mkiperszmid.habitsappcourse.home.domain.repository.HomeRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
+import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.ZonedDateTime
@@ -17,7 +18,7 @@ class HomeRepositoryImpl : HomeRepository {
         Habit(
             id = it.toString(),
             name = "Habito $it",
-            frequency = listOf(),
+            frequency = listOf(DayOfWeek.THURSDAY),
             completedDates = dates,
             reminder = LocalTime.now(),
             startDate = ZonedDateTime.now()
@@ -30,7 +31,15 @@ class HomeRepositoryImpl : HomeRepository {
 
     override suspend fun insertHabit(habit: Habit) {
         val index = mockHabits.indexOfFirst { it.id == habit.id }
-        mockHabits.removeAt(index)
-        mockHabits.add(index, habit)
+        if (index == -1) {
+            mockHabits.add(habit)
+        } else {
+            mockHabits.removeAt(index)
+            mockHabits.add(index, habit)
+        }
+    }
+
+    override suspend fun getHabitById(id: String): Habit {
+        return mockHabits.first { it.id == id }
     }
 }

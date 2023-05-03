@@ -25,6 +25,7 @@ import com.mkiperszmid.habitsappcourse.home.presentation.home.components.HomeQuo
 fun HomeScreen(
     onNewHabit: () -> Unit,
     onSettings: () -> Unit,
+    onEditHabit: (String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val state = viewModel.state
@@ -93,7 +94,7 @@ fun HomeScreen(
                     habit = it,
                     selectedDate = state.selectedDate.toLocalDate(),
                     onCheckedChange = { viewModel.onEvent(HomeEvent.CompleteHabit(it)) },
-                    onHabitClick = {}
+                    onHabitClick = { onEditHabit(it.id) }
                 )
             }
         }

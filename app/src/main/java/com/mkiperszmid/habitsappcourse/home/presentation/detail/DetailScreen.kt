@@ -1,10 +1,12 @@
 package com.mkiperszmid.habitsappcourse.home.presentation.detail
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -48,15 +50,31 @@ fun DetailScreen(
         )
     )
 
-    Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
-        CenterAlignedTopAppBar(title = {
-            Text(text = "New Habit")
-        }, navigationIcon = {
-                IconButton(onClick = onBack) {
-                    Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "back")
-                }
-            })
-    }) {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
+            CenterAlignedTopAppBar(title = {
+                Text(text = "New Habit")
+            }, navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "back")
+                    }
+                })
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { viewModel.onEvent(DetailEvent.HabitSave) },
+                containerColor = MaterialTheme.colorScheme.primary,
+                shape = CircleShape
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Check,
+                    contentDescription = "Create Habit",
+                    tint = MaterialTheme.colorScheme.tertiary
+                )
+            }
+        }
+    ) {
         Column(
             modifier = Modifier.fillMaxSize().padding(it).padding(horizontal = 20.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)

@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.mkiperszmid.habitsappcourse.home.data.local.HomeDao
 import com.mkiperszmid.habitsappcourse.home.data.local.HomeDatabase
 import com.mkiperszmid.habitsappcourse.home.data.local.typeconverter.HomeTypeConverter
+import com.mkiperszmid.habitsappcourse.home.data.remote.HomeApi
 import com.mkiperszmid.habitsappcourse.home.data.repository.HomeRepositoryImpl
 import com.mkiperszmid.habitsappcourse.home.domain.detail.usecase.DetailUseCases
 import com.mkiperszmid.habitsappcourse.home.domain.detail.usecase.GetHabitByIdUseCase
@@ -19,6 +20,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -54,8 +59,26 @@ object HomeModule {
 
     @Singleton
     @Provides
-    fun provideHomeRepository(dao: HomeDao): HomeRepository {
-        return HomeRepositoryImpl(dao)
+    fun provideOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder().addInterceptor(
+            HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+        ).build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideHomeApi(client: OkHttpClient): HomeApi {
+        return Retrofit.Builder().baseUrl(HomeApi.BASE_URL).client(client)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build().create(HomeApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideHomeRepository(dao: HomeDao, api: HomeApi): HomeRepository {
+        return HomeRepositoryImpl(dao, api)
     }
 
     @Singleton

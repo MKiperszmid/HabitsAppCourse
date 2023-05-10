@@ -9,9 +9,7 @@ import com.squareup.moshi.Moshi
 import java.lang.NumberFormatException
 
 @ProvidedTypeConverter
-class HomeTypeConverter(
-    private val moshi: Moshi
-) {
+class HomeTypeConverter {
     @TypeConverter
     fun fromFrequency(days: List<Int>): String {
         return joinIntoString(days) ?: ""
@@ -37,7 +35,6 @@ class HomeTypeConverter(
             try {
                 item.toLong()
             } catch (ex: NumberFormatException) {
-                Log.e("ROOM", "Malformed integer list", ex)
                 null
             }
         }

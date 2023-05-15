@@ -19,10 +19,6 @@ fun HomeAskPermission(
         mutableStateOf(false)
     }
 
-    var showErrorDialog by remember {
-        mutableStateOf(false)
-    }
-
     val permissionState =
         rememberPermissionState(permission = permission)
     LaunchedEffect(key1 = Unit) {
@@ -44,22 +40,6 @@ fun HomeAskPermission(
             },
             text = {
                 Text(text = "We need this permission for the app to work correctly")
-            }
-        )
-    } else if (showErrorDialog) {
-        AlertDialog(
-            onDismissRequest = { showErrorDialog = false },
-            modifier = modifier,
-            confirmButton = {
-                HabitButton(text = "I Understand", modifier = Modifier.fillMaxWidth()) {
-                    permissionState.launchPermissionRequest()
-                }
-            },
-            title = {
-                Text(text = "Warning")
-            },
-            text = {
-                Text(text = "The application won't work correctly since the permission was disabled")
             }
         )
     }

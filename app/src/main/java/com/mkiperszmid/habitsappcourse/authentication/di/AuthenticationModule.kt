@@ -57,4 +57,10 @@ object AuthenticationModule {
     fun provideGetUserIdUseCase(repository: AuthenticationRepository): GetUserIdUseCase {
         return GetUserIdUseCase(repository)
     }
+
+    @Provides
+    @Singleton
+    fun provideLogoutUseCase(repository: AuthenticationRepository): LogoutUseCase {
+        return LogoutUseCase(repository)
+    }
 }

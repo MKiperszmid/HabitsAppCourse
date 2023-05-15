@@ -11,11 +11,13 @@ import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.Signup
 import com.mkiperszmid.habitsappcourse.home.presentation.detail.DetailScreen
 import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeScreen
 import com.mkiperszmid.habitsappcourse.onboarding.presentation.OnboardingScreen
+import com.mkiperszmid.habitsappcourse.settings.presentation.SettingsScreen
 
 @Composable
 fun NavigationHost(
     navHostController: NavHostController,
-    startDestination: NavigationRoute
+    startDestination: NavigationRoute,
+    logout: () -> Unit
 ) {
     NavHost(navController = navHostController, startDestination = startDestination.route) {
         composable(NavigationRoute.Onboarding.route) {
@@ -72,6 +74,22 @@ fun NavigationHost(
             }, onSave = {
                     navHostController.popBackStack()
                 })
+        }
+
+        composable(NavigationRoute.Settings.route) {
+            SettingsScreen(
+                onBack = {
+                    navHostController.popBackStack()
+                },
+                onLogout = {
+                    logout()
+                    navHostController.navigate(NavigationRoute.Login.route) {
+                        popUpTo(navHostController.graph.id) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
         }
     }
 }

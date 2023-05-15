@@ -1,22 +1,27 @@
 package com.mkiperszmid.habitsappcourse.home.data.repository
 
+import androidx.work.*
 import com.mkiperszmid.habitsappcourse.home.data.extension.toStartOfDateTimestamp
 import com.mkiperszmid.habitsappcourse.home.data.local.HomeDao
 import com.mkiperszmid.habitsappcourse.home.data.mapper.toDomain
 import com.mkiperszmid.habitsappcourse.home.data.mapper.toDto
 import com.mkiperszmid.habitsappcourse.home.data.mapper.toEntity
+import com.mkiperszmid.habitsappcourse.home.data.mapper.toSyncEntity
 import com.mkiperszmid.habitsappcourse.home.data.remote.HomeApi
 import com.mkiperszmid.habitsappcourse.home.data.remote.util.resultOf
+import com.mkiperszmid.habitsappcourse.home.data.sync.HabitSyncWorker
 import com.mkiperszmid.habitsappcourse.home.domain.alarm.AlarmHandler
 import com.mkiperszmid.habitsappcourse.home.domain.models.Habit
 import com.mkiperszmid.habitsappcourse.home.domain.repository.HomeRepository
 import kotlinx.coroutines.flow.*
+import java.time.Duration
 import java.time.ZonedDateTime
 
 class HomeRepositoryImpl(
     private val dao: HomeDao,
     private val api: HomeApi,
-    private val alarmHandler: AlarmHandler
+    private val alarmHandler: AlarmHandler,
+    private val workManager: WorkManager
 ) : HomeRepository {
     override fun getAllHabitsForSelectedDate(date: ZonedDateTime): Flow<List<Habit>> {
         val localFlow = dao.getAllHabitsForSelectedDate(date.toStartOfDateTimestamp())
@@ -45,6 +50,8 @@ class HomeRepositoryImpl(
         dao.insertHabit(habit.toEntity())
         resultOf {
             api.insertHabit(habit.toDto())
+        }.onFailure {
+            dao.insertHabitSync(habit.toSyncEntity())
         }
     }
 
@@ -66,5 +73,14 @@ class HomeRepositoryImpl(
 
     override suspend fun getHabitById(id: String): Habit {
         return dao.getHabitById(id).toDomain()
+    }
+
+    override suspend fun syncHabits() {
+        val worker = OneTimeWorkRequestBuilder<HabitSyncWorker>().setConstraints(
+            Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+        ).setBackoffCriteria(BackoffPolicy.EXPONENTIAL, Duration.ofMinutes(5))
+            .build()
+
+        workManager.beginUniqueWork("sync_habit_id", ExistingWorkPolicy.REPLACE, worker).enqueue()
     }
 }

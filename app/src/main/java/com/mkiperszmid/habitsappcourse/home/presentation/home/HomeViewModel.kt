@@ -20,6 +20,9 @@ class HomeViewModel @Inject constructor(
 
     init {
         getHabits()
+        viewModelScope.launch {
+            homeUseCases.syncHabitUseCase()
+        }
     }
 
     fun onEvent(event: HomeEvent) {

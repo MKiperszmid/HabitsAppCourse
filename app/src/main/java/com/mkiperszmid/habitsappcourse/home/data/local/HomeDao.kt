@@ -1,10 +1,8 @@
 package com.mkiperszmid.habitsappcourse.home.data.local
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.mkiperszmid.habitsappcourse.home.data.local.entity.HabitEntity
+import com.mkiperszmid.habitsappcourse.home.data.local.entity.HabitSyncEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -17,4 +15,13 @@ interface HomeDao {
 
     @Query("SELECT * FROM HabitEntity WHERE startDate <= :date")
     fun getAllHabitsForSelectedDate(date: Long): Flow<List<HabitEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertHabitSync(habitSyncEntity: HabitSyncEntity)
+
+    @Query("SELECT * FROM HabitSyncEntity")
+    fun getAllHabitsSync(): List<HabitSyncEntity>
+
+    @Delete
+    suspend fun deleteHabitSync(habitSyncEntity: HabitSyncEntity)
 }

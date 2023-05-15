@@ -2,6 +2,7 @@ package com.mkiperszmid.habitsappcourse.home.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.work.WorkManager
 import com.mkiperszmid.habitsappcourse.home.data.alarm.AlarmHandlerImpl
 import com.mkiperszmid.habitsappcourse.home.data.local.HomeDao
 import com.mkiperszmid.habitsappcourse.home.data.local.HomeDatabase
@@ -15,6 +16,7 @@ import com.mkiperszmid.habitsappcourse.home.domain.detail.usecase.InsertHabitUse
 import com.mkiperszmid.habitsappcourse.home.domain.home.usecase.CompleteHabitUseCase
 import com.mkiperszmid.habitsappcourse.home.domain.home.usecase.GetHabitsForDateUseCase
 import com.mkiperszmid.habitsappcourse.home.domain.home.usecase.HomeUseCases
+import com.mkiperszmid.habitsappcourse.home.domain.home.usecase.SyncHabitUseCase
 import com.mkiperszmid.habitsappcourse.home.domain.repository.HomeRepository
 import dagger.Module
 import dagger.Provides
@@ -35,7 +37,8 @@ object HomeModule {
     fun provideHomeUseCases(repository: HomeRepository): HomeUseCases {
         return HomeUseCases(
             completeHabitUseCase = CompleteHabitUseCase(repository),
-            getHabitsForDateUseCase = GetHabitsForDateUseCase(repository)
+            getHabitsForDateUseCase = GetHabitsForDateUseCase(repository),
+            syncHabitUseCase = SyncHabitUseCase(repository)
         )
     }
 
@@ -81,9 +84,16 @@ object HomeModule {
     fun provideHomeRepository(
         dao: HomeDao,
         api: HomeApi,
-        alarmHandler: AlarmHandler
+        alarmHandler: AlarmHandler,
+        workManager: WorkManager
     ): HomeRepository {
-        return HomeRepositoryImpl(dao, api, alarmHandler)
+        return HomeRepositoryImpl(dao, api, alarmHandler, workManager)
+    }
+
+    @Singleton
+    @Provides
+    fun provideWorkManager(@ApplicationContext context: Context): WorkManager {
+        return WorkManager.getInstance(context)
     }
 
     @Singleton

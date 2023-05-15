@@ -15,10 +15,6 @@ fun HomeAskPermission(
     permission: String,
     modifier: Modifier = Modifier
 ) {
-    var showDialog by remember {
-        mutableStateOf(false)
-    }
-
     val permissionState =
         rememberPermissionState(permission = permission)
     LaunchedEffect(key1 = Unit) {
@@ -27,11 +23,10 @@ fun HomeAskPermission(
 
     if (permissionState.status.shouldShowRationale) {
         AlertDialog(
-            onDismissRequest = { showDialog = false },
+            onDismissRequest = { },
             modifier = modifier,
             confirmButton = {
                 HabitButton(text = "Accept", modifier = Modifier.fillMaxWidth()) {
-                    showDialog = false
                     permissionState.launchPermissionRequest()
                 }
             },

@@ -7,13 +7,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.*
 import com.mkiperszmid.habitsappcourse.authentication.presentation.util.PasswordErrorParser
+import com.mkiperszmid.habitsappcourse.core.di.IoDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginUseCases: LoginUseCases
+    private val loginUseCases: LoginUseCases,
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) :
     ViewModel() {
     var state by mutableStateOf(LoginState())
@@ -56,7 +59,7 @@ class LoginViewModel @Inject constructor(
             state = state.copy(
                 isLoading = true
             )
-            viewModelScope.launch {
+            viewModelScope.launch(dispatcher) {
                 loginUseCases.loginWithEmailUseCase(state.email, state.password).onSuccess {
                     state = state.copy(
                         isLoggedIn = true

@@ -12,6 +12,9 @@ import com.mkiperszmid.habitsappcourse.home.data.remote.HomeApi
 import com.mkiperszmid.habitsappcourse.home.data.remote.util.resultOf
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
@@ -31,8 +34,8 @@ class HabitSyncWorker @AssistedInject constructor(
 
         return try {
             supervisorScope {
-                val jobs = items.map { items -> launch { sync(items) } }
-                jobs.forEach { it.join() }
+                val jobs = items.map { items -> async { sync(items) } }
+                jobs.awaitAll()
             }
             Result.success()
         } catch (e: Exception) {

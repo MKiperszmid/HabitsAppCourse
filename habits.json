@@ -1,0 +1,17 @@
+{
+  "habits": {
+    "ff55cfcc-82b9-4fb8-8891-209c4f21cb25": {
+      "completedDates": [
+        1679022000000
+      ],
+      "frequency": [
+        5,
+        3,
+        1
+      ],
+      "name": "Habito de prueba",
+      "reminder": 1679422200000,
+      "startDate": 1679022000000
+    }
+  }
+}

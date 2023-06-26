@@ -2,6 +2,8 @@
 
 Habit tracking application written in Kotlin for Android. The application allows users to track their daily habits and receive reminders to help them stay on track. It is designed following the principles of Clean Architecture and SOLID, and it uses several important technologies and libraries to provide a robust and scalable experience.
 
+Video Course coding and explaining the development of the app: https://www.androidavanzado.com/
+
 Login             |  Registration
 :-------------------------:|:-------------------------:
 ![Login Screen](https://github.com/MKiperszmid/HabitsAppCourse/assets/16141845/11e3d710-d2f3-4209-941c-7c59b0c27deb) | ![Registration Screen](https://github.com/MKiperszmid/HabitsAppCourse/assets/16141845/fc72f8ff-badd-48f4-99c6-23ba076b626f)

@@ -2,6 +2,9 @@
 
 Este proyecto es una aplicación de seguimiento de hábitos escrita en Kotlin para Android. La aplicación permite a los usuarios realizar un seguimiento de sus hábitos diarios y recibir recordatorios para ayudarles a mantenerse en el buen camino. Está diseñada siguiendo los principios de Clean Architecture y SOLID, y utiliza varias tecnologías y bibliotecas importantes para proporcionar una experiencia robusta y escalable.
 
+
+La desarrollamos en el siguiente curso: https://www.androidavanzado.com/
+
 Login             |  Registration
 :-------------------------:|:-------------------------:
 ![Login Screen](https://github.com/MKiperszmid/HabitsAppCourse/assets/16141845/11e3d710-d2f3-4209-941c-7c59b0c27deb) | ![Registration Screen](https://github.com/MKiperszmid/HabitsAppCourse/assets/16141845/fc72f8ff-badd-48f4-99c6-23ba076b626f)

@@ -1,8 +1,6 @@
 # Habit Tracker App
 
-Habit tracking application written in Kotlin for Android. The application allows users to track their daily habits and receive reminders to help them stay on track. It is designed following the principles of Clean Architecture and SOLID, and it uses several important technologies and libraries to provide a robust and scalable experience.
-
-Video Course coding and explaining the development of the app: https://www.androidavanzado.com/
+Este proyecto es una aplicación de seguimiento de hábitos escrita en Kotlin para Android. La aplicación permite a los usuarios realizar un seguimiento de sus hábitos diarios y recibir recordatorios para ayudarles a mantenerse en el buen camino. Está diseñada siguiendo los principios de Clean Architecture y SOLID, y utiliza varias tecnologías y bibliotecas importantes para proporcionar una experiencia robusta y escalable.
 
 Login             |  Registration
 :-------------------------:|:-------------------------:
@@ -14,27 +12,27 @@ Home             |  Detail
 
 
 
-## Tech Stack
+## Características principales
 
-- Clean Architecture: The project is structured following the Clean Architecture pattern, which facilitates separation of responsibilities and improves code maintainability.
-- SOLID: The SOLID principles (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) are applied in the design of the application to promote clean, modular, and extensible code.
-- Dependency Injection - Dagger-Hilt: Dagger-Hilt is used for dependency injection, simplifying dependency management and enabling better scalability and unit testing of the code.
-- Jetpack Compose: The user interface is developed using Jetpack Compose, the modern UI toolkit for Android that makes it easy to create flexible and dynamic user interfaces.
-- Firebase Authentication: Firebase Authentication is integrated to provide a secure and reliable authentication system for the application's users.
-- Room: Room, the Android persistence library, is used to store habit data in a local database and allow fast and efficient access to it.
-- Retrofit: Retrofit is used to make calls to a remote API and retrieve habit-related data, enabling efficient and up-to-date synchronization of information.
-- Notifications: The application allows users to configure custom reminders for each habit and displays notifications on specified days and times to help users follow their daily routines.
-- AlarmManager: The Android AlarmManager component is used to schedule notifications and ensure they are displayed at the appropriate times.
-- WorkManager: WorkManager is used to manage background tasks, allowing habits created in airplane mode to be automatically saved to the cloud once the device has an internet connection.
-- Unit Test: Unit tests are included to verify the correct operation of key components of the application and ensure code quality.
-- UI Test: UI tests are provided to verify that the application behaves correctly and provides a smooth user experience.
-- Offline-First: The application is designed following the "Offline-First" approach, meaning that core functionality is available even when the device is offline. Data is automatically synchronized once a connection is available using WorkManager and the remote API.
-- Broadcast Receivers: Broadcast Receivers are used to handle the addition of alarms when the user restarts the device and to set up the next alarm when a current alarm rings.
+- Clean Architecture: El proyecto está estructurado siguiendo el patrón de Clean Architecture, lo que facilita la separación de responsabilidades y mejora la mantenibilidad del código.
+- SOLID: Los principios SOLID (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) se aplican en el diseño de la aplicación para promover un código limpio, modular y extensible.
+- Inyección de Dependencias - Dagger-Hilt: Se utiliza Dagger-Hilt para realizar la inyección de dependencias, lo que simplifica la gestión de las dependencias y permite una mejor escalabilidad y prueba unitaria del código.
+- Jetpack Compose: La interfaz de usuario se desarrolla utilizando Jetpack Compose, el moderno toolkit de UI de Android que facilita la creación de interfaces de usuario flexibles y dinámicas.
+- Firebase Authentication: Se integra Firebase Authentication para proporcionar un sistema de autenticación seguro y confiable para los usuarios de la aplicación.
+- Room: Se utiliza Room, la biblioteca de persistencia de Android, para almacenar los datos de los hábitos en una base de datos local y permitir un acceso rápido y eficiente a ellos.
+- Retrofit: Se utiliza Retrofit para realizar las llamadas a una API remota y obtener datos relacionados con los hábitos, lo que permite una sincronización eficiente y actualizada de la información.
+- Notificaciones: La aplicación permite configurar recordatorios personalizados para cada hábito y muestra notificaciones en los días y horas especificados para ayudar a los usuarios a seguir sus rutinas diarias.
+- AlarmManager: El componente AlarmManager de Android se utiliza para programar las notificaciones y garantizar que se muestren en los momentos adecuados.
+- WorkManager: Se utiliza WorkManager para gestionar las tareas en segundo plano, lo que permite que los hábitos creados en modo avión se guarden automáticamente en la nube una vez que el dispositivo tenga conexión a Internet.
+- Unit Test: Se incluyen pruebas unitarias para verificar el correcto funcionamiento de los componentes clave de la aplicación y garantizar la calidad del código.
+- UI Test: Se proporcionan pruebas de interfaz de usuario para verificar que la aplicación se comporte correctamente y proporcione una experiencia de usuario fluida.
+- Offline-First: La aplicación está diseñada siguiendo el enfoque "Offline-First", lo que significa que la funcionalidad principal está disponible incluso cuando el dispositivo está sin conexión a Internet. Los datos se sincronizan automáticamente una vez que la conexión está disponible utilizando WorkManager y la API remota.
+- Broadcast Receivers: Se utilizan Broadcast Receivers para gestionar el agregado de alarmas cuando el usuario reinicia el dispositivo, y cuando suena una alarma, para configurar la siguiente.
 
-## How to use
+## Uso
 
-- Clone the project repository from GitHub.
-- Open the project in Android Studio.
-- Configure Firebase Authentication in the Firebase console and add the necessary credentials to the project.
-- Set up your API.
-- Run the application.
+- Clona el repositorio del proyecto desde GitHub.
+- Abre el proyecto en Android Studio.
+- Configura Firebase Authentication en la consola de Firebase y agrega las credenciales necesarias en el proyecto.
+- Configura tu API.
+- Ejecuta la aplicación.

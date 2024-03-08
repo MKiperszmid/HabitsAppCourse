@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.mkiperszmid.habitsappcourse"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.mkiperszmid.habitsappcourse"
@@ -45,7 +45,7 @@ android {
     }
     packagingOptions {
         resources {
-            exclude("/META-INF/{AL2.0,LGPL2.1}")
+            excludes += listOf("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
 }
@@ -61,76 +61,68 @@ dependencies {
     }
 
     // Get day of week api 25 or lower
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
 
-    val timePicker = "1.1.0"
-    implementation("com.maxkeppeler.sheets-compose-dialogs:core:$timePicker")
-    implementation("com.maxkeppeler.sheets-compose-dialogs:clock:$timePicker")
+    implementation(libs.core)
+    implementation(libs.clock)
 
-    val composeVersion = "1.3.2"
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("androidx.compose.ui:ui:$composeVersion")
-    implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
-    implementation("androidx.compose.material3:material3:1.1.0-alpha06")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.ui)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.androidx.material3)
 
     // Compose Navigation
-    implementation("androidx.navigation:navigation-compose:2.5.3")
+    implementation(libs.androidx.navigation.compose)
 
     // Firebase
-    implementation(platform("com.google.firebase:firebase-bom:31.2.2"))
-    implementation("com.google.firebase:firebase-analytics-ktx")
-    implementation("com.google.firebase:firebase-auth-ktx")
-    implementation("com.google.android.gms:play-services-auth:20.4.1")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics.ktx)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.play.services.auth)
 
     // Dagger Hilt
-    val hiltVersion = "2.45"
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    kapt("com.google.dagger:hilt-compiler:$hiltVersion")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+    kapt(libs.androidx.hilt.compiler)
 
     // Coil
-    implementation("io.coil-kt:coil-compose:2.2.2")
+    implementation(libs.coil.compose)
 
     // Pager
-    val accompanistVersion = "0.28.0"
-    implementation("com.google.accompanist:accompanist-pager:$accompanistVersion")
-    implementation("com.google.accompanist:accompanist-pager-indicators:$accompanistVersion")
+    implementation(libs.accompanist.pager)
+    implementation(libs.accompanist.pager.indicators)
 
     // Permissions
-    implementation("com.google.accompanist:accompanist-permissions:$accompanistVersion")
+    implementation(libs.accompanist.permissions)
 
     // Room
-    val roomVersion = "2.5.0"
-    implementation("androidx.room:room-ktx:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
-    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.runtime)
 
     // Retrofit
-    val retrofitVersion = "2.9.0"
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
-    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.logging.interceptor)
 
     // WorkManager
-    val workmanagerVersion = "2.8.0"
-    implementation("androidx.work:work-runtime-ktx:$workmanagerVersion")
-    implementation("androidx.hilt:hilt-work:1.0.0")
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.androidx.hilt.work)
 
     // Testing
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:$hiltVersion")
-    debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:$composeVersion")
-    testImplementation("app.cash.turbine:turbine:0.7.0")
-    androidTestImplementation("com.google.dagger:hilt-android-testing:$hiltVersion")
-    val mockkVersion = "1.13.4"
-    testImplementation("io.mockk:mockk:$mockkVersion")
-    androidTestImplementation("androidx.work:work-testing:$workmanagerVersion")
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    kaptAndroidTest(libs.hilt.android.compiler)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.turbine)
+    androidTestImplementation(libs.hilt.android.testing)
+    testImplementation(libs.mockk)
+    androidTestImplementation(libs.androidx.work.testing)
 }

@@ -1,51 +1,51 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
-    id 'com.google.gms.google-services'
+    id("com.android.application")
+    kotlin("android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace 'com.mkiperszmid.habitsappcourse'
-    compileSdk 33
+    namespace = "com.mkiperszmid.habitsappcourse"
+    compileSdk = 33
 
     defaultConfig {
-        applicationId "com.mkiperszmid.habitsappcourse"
-        minSdk 24
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        applicationId = "com.mkiperszmid.habitsappcourse"
+        minSdk = 24
+        targetSdk = 33
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner "com.mkiperszmid.habitsappcourse.HiltTestRunner"
+        testInstrumentationRunner = "com.mkiperszmid.habitsappcourse.HiltTestRunner"
         vectorDrawables {
-            useSupportLibrary true
+            useSupportLibrary = true
         }
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
-        coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        isCoreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
     buildFeatures {
-        compose true
+        compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.3.2'
+        kotlinCompilerExtensionVersion = "1.3.2"
     }
     packagingOptions {
         resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            exclude("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
 }
@@ -61,76 +61,76 @@ dependencies {
     }
 
     //Get day of week api 25 or lower
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 
-    def time_picker = "1.1.0"
-    implementation "com.maxkeppeler.sheets-compose-dialogs:core:$time_picker"
-    implementation "com.maxkeppeler.sheets-compose-dialogs:clock:$time_picker"
+    val timePicker = "1.1.0"
+    implementation("com.maxkeppeler.sheets-compose-dialogs:core:$timePicker")
+    implementation("com.maxkeppeler.sheets-compose-dialogs:clock:$timePicker")
 
-    def compose_version = "1.3.2"
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
-    implementation 'androidx.activity:activity-compose:1.6.1'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.compose.material3:material3:1.1.0-alpha06'
+    val compose_version = "1.3.2"
+    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation("androidx.activity:activity-compose:1.6.1")
+    implementation("androidx.compose.ui:ui:$compose_version")
+    implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
+    implementation("androidx.compose.material3:material3:1.1.0-alpha06")
 
     // Compose Navigation
-    implementation "androidx.navigation:navigation-compose:2.5.3"
+    implementation("androidx.navigation:navigation-compose:2.5.3")
 
     // Firebase
-    implementation platform('com.google.firebase:firebase-bom:31.2.2')
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-    implementation 'com.google.firebase:firebase-auth-ktx'
-    implementation 'com.google.android.gms:play-services-auth:20.4.1'
+    implementation(platform("com.google.firebase:firebase-bom:31.2.2"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.android.gms:play-services-auth:20.4.1")
 
     // Dagger Hilt
-    def hilt_version = "2.45"
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
-    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+    val hilt_version = "2.45"
+    implementation("com.google.dagger:hilt-android:$hilt_version")
+    kapt("com.google.dagger:hilt-compiler:$hilt_version")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
 
     // Coil
-    implementation "io.coil-kt:coil-compose:2.2.2"
+    implementation("io.coil-kt:coil-compose:2.2.2")
 
     // Pager
-    def accompanist_version = "0.28.0"
-    implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
-    implementation "com.google.accompanist:accompanist-pager-indicators:$accompanist_version"
+    val accompanist_version = "0.28.0"
+    implementation("com.google.accompanist:accompanist-pager:$accompanist_version")
+    implementation("com.google.accompanist:accompanist-pager-indicators:$accompanist_version")
 
     // Permissions
-    implementation "com.google.accompanist:accompanist-permissions:$accompanist_version"
+    implementation("com.google.accompanist:accompanist-permissions:$accompanist_version")
 
     // Room
-    def room_version = "2.5.0"
-    implementation "androidx.room:room-ktx:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-runtime:$room_version"
+    val room_version = "2.5.0"
+    implementation("androidx.room:room-ktx:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-runtime:$room_version")
 
     // Retrofit
-    def retrofit_version = '2.9.0'
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+    val retrofit_version = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
+    implementation("com.squareup.retrofit2:converter-moshi:$retrofit_version")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 
     // WorkManager
-    def workmanager_version = "2.8.0"
-    implementation "androidx.work:work-runtime-ktx:$workmanager_version"
-    implementation 'androidx.hilt:hilt-work:1.0.0'
+    val workmanager_version = "2.8.0"
+    implementation("androidx.work:work-runtime-ktx:$workmanager_version")
+    implementation("androidx.hilt:hilt-work:1.0.0")
 
     // Testing
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
-    testImplementation 'app.cash.turbine:turbine:0.7.0'
-    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
-    def mockk_version = "1.13.4"
-    testImplementation "io.mockk:mockk:$mockk_version"
-    androidTestImplementation "androidx.work:work-testing:$workmanager_version"
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_version")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:$hilt_version")
+    debugImplementation("androidx.compose.ui:ui-tooling:$compose_version")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_version")
+    testImplementation("app.cash.turbine:turbine:0.7.0")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:$hilt_version")
+    val mockk_version = "1.13.4"
+    testImplementation("io.mockk:mockk:$mockk_version")
+    androidTestImplementation("androidx.work:work-testing:$workmanager_version")
 }

@@ -112,6 +112,19 @@ dependencies {
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.hilt.work)
 
+    // Modules
+    implementation(project(":authentication:authentication_presentation"))
+    implementation(project(":authentication:authentication_data"))
+    implementation(project(":authentication:authentication_domain"))
+    implementation(project(":core:core_presentation"))
+    implementation(project(":home:home_presentation"))
+    implementation(project(":home:home_data"))
+    implementation(project(":home:home_domain"))
+    implementation(project(":onboarding:onboarding_presentation"))
+    implementation(project(":onboarding:onboarding_data"))
+    implementation(project(":onboarding:onboarding_domain"))
+    implementation(project(":settings:settings_presentation"))
+
     // Testing
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)

@@ -74,11 +74,12 @@ dependencies {
     implementation(project(":authentication:authentication_data"))
     implementation(project(":authentication:authentication_domain"))
     implementation(project(":authentication:authentication_presentation"))
+
+    implementation(project(":home:home_data"))
+    implementation(project(":home:home_domain"))
+    implementation(project(":home:home_presentation"))
     //Get day of week api 25 or lower
     coreLibraryDesugaring(libs.desugar.jdk.libs)
-
-    implementation(libs.core)
-    implementation(libs.clock)
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
@@ -104,19 +105,6 @@ dependencies {
 
     // Coil
     implementation(libs.coil.compose)
-
-    // Permissions
-    implementation(libs.accompanist.permissions)
-
-    // Room
-    implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.runtime)
-
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.converter.moshi)
-    implementation(libs.logging.interceptor)
 
     // WorkManager
     implementation(libs.androidx.work.runtime.ktx)

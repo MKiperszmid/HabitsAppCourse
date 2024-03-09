@@ -8,8 +8,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.mkiperszmid.authentication_presentation.login.LoginScreen
 import com.mkiperszmid.authentication_presentation.signup.SignupScreen
-import com.mkiperszmid.habitsappcourse.home.presentation.detail.DetailScreen
-import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeScreen
+import com.mkiperszmid.home_presentation.detail.DetailScreen
+import com.mkiperszmid.home_presentation.home.HomeScreen
 import com.mkiperszmid.onboarding_presentation.OnboardingScreen
 
 @Composable
@@ -49,13 +49,13 @@ fun NavigationHost(
         }
 
         composable(NavigationRoute.Home.route) {
-            HomeScreen(onNewHabit = {
+            com.mkiperszmid.home_presentation.home.HomeScreen(onNewHabit = {
                 navHostController.navigate(NavigationRoute.Detail.route)
             }, onSettings = {
-                    navHostController.navigate(NavigationRoute.Settings.route)
-                }, onEditHabit = {
-                    navHostController.navigate(NavigationRoute.Detail.route + "?habitId=$it")
-                })
+                navHostController.navigate(NavigationRoute.Settings.route)
+            }, onEditHabit = {
+                navHostController.navigate(NavigationRoute.Detail.route + "?habitId=$it")
+            })
         }
 
         composable(
@@ -68,11 +68,11 @@ fun NavigationHost(
                 }
             )
         ) {
-            DetailScreen(onBack = {
+            com.mkiperszmid.home_presentation.detail.DetailScreen(onBack = {
                 navHostController.popBackStack()
             }, onSave = {
-                    navHostController.popBackStack()
-                })
+                navHostController.popBackStack()
+            })
         }
 
         composable(NavigationRoute.Settings.route) {

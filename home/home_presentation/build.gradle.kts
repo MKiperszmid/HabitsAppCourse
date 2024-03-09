@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    id("kotlin-kapt")
 }
 
 android {
@@ -25,20 +26,47 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
+    }
 }
 
 dependencies {
 
-    implementation(libs.core.ktx)
-    implementation(platform(libs.kotlin.bom))
-    implementation(libs.appcompat)
-    implementation(libs.material)
+
+    // Permissions
+    implementation(libs.accompanist.permissions)
+
+    //Get day of week api 25 or lower
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    kapt(libs.androidx.hilt.compiler)
+
+    implementation(project(":home:home_domain"))
+    implementation(project(":core:core_presentation"))
+
+    // Compose Dialog
+    implementation(libs.core)
+    implementation(libs.clock)
+
+    implementation(libs.activity.compose)
+    implementation(libs.ui)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

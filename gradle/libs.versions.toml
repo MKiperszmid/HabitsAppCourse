@@ -1,4 +1,7 @@
 [versions]
+minSdk = "24"
+targetSdk = "33"
+compileSdk = "34"
 activityComposeVersion = "1.6.1"
 composeVersion = "1.3.2"
 coilComposeVersion = "2.2.2"

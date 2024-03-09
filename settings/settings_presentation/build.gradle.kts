@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.settings_presentation"
-    compileSdk = 34
+    namespace = "com.mkiperszmid.settings_presentation"
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

@@ -6,8 +6,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.mkiperszmid.habitsappcourse.authentication.presentation.login.LoginScreen
-import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.SignupScreen
+import com.mkiperszmid.authentication_presentation.login.LoginScreen
+import com.mkiperszmid.authentication_presentation.signup.SignupScreen
 import com.mkiperszmid.habitsappcourse.home.presentation.detail.DetailScreen
 import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeScreen
 import com.mkiperszmid.onboarding_presentation.OnboardingScreen
@@ -28,24 +28,24 @@ fun NavigationHost(
             )
         }
         composable(NavigationRoute.Login.route) {
-            LoginScreen(onLogin = {
+            com.mkiperszmid.authentication_presentation.login.LoginScreen(onLogin = {
                 navHostController.popBackStack()
                 navHostController.navigate(NavigationRoute.Home.route)
             }, onSignUp = {
-                    navHostController.navigate(NavigationRoute.Signup.route)
-                })
+                navHostController.navigate(NavigationRoute.Signup.route)
+            })
         }
 
         composable(NavigationRoute.Signup.route) {
-            SignupScreen(onSignIn = {
+            com.mkiperszmid.authentication_presentation.signup.SignupScreen(onSignIn = {
                 navHostController.navigate(NavigationRoute.Home.route) {
                     popUpTo(navHostController.graph.id) {
                         inclusive = true
                     }
                 }
             }, onLogin = {
-                    navHostController.popBackStack()
-                })
+                navHostController.popBackStack()
+            })
         }
 
         composable(NavigationRoute.Home.route) {

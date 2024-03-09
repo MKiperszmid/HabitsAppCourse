@@ -71,6 +71,9 @@ dependencies {
     implementation(project(":onboarding:onboarding_presentation"))
     implementation(project(":onboarding:onboarding_domain"))
     implementation(project(":onboarding:onboarding_data"))
+    implementation(project(":authentication:authentication_data"))
+    implementation(project(":authentication:authentication_domain"))
+    implementation(project(":authentication:authentication_presentation"))
     //Get day of week api 25 or lower
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 

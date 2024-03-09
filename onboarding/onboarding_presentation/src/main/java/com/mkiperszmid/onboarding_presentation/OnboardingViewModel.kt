@@ -1,11 +1,11 @@
-package com.mkiperszmid.habitsappcourse.onboarding.presentation
+package com.mkiperszmid.onboarding_presentation
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.mkiperszmid.habitsappcourse.onboarding.domain.usecase.CompleteOnboardingUseCase
-import com.mkiperszmid.habitsappcourse.onboarding.domain.usecase.HasSeenOnboardingUseCase
+import com.mkiperszmid.onboarding_domain.usecase.CompleteOnboardingUseCase
+import com.mkiperszmid.onboarding_domain.usecase.HasSeenOnboardingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

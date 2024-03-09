@@ -1,4 +1,4 @@
-package com.mkiperszmid.habitsappcourse.onboarding.presentation.components
+package com.mkiperszmid.onboarding_presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,7 +22,7 @@ import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.mkiperszmid.core_presentation.HabitButton
 import com.mkiperszmid.core_presentation.HabitTitle
-import com.mkiperszmid.habitsappcourse.onboarding.presentation.OnboardingPagerInformation
+import com.mkiperszmid.onboarding_presentation.OnboardingPagerInformation
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)

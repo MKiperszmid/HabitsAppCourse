@@ -1,6 +1,6 @@
-package com.mkiperszmid.habitsappcourse.onboarding.domain.usecase
+package com.mkiperszmid.onboarding_domain.usecase
 
-import com.mkiperszmid.habitsappcourse.onboarding.domain.repository.OnboardingRepository
+import com.mkiperszmid.onboarding_domain.repository.OnboardingRepository
 
 class CompleteOnboardingUseCase(
     private val repository: OnboardingRepository

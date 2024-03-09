@@ -1,11 +1,11 @@
-package com.mkiperszmid.habitsappcourse.onboarding.data.repository
+package com.mkiperszmid.onboarding_data.repository
 
 import android.content.SharedPreferences
-import com.mkiperszmid.habitsappcourse.onboarding.domain.repository.OnboardingRepository
+import com.mkiperszmid.onboarding_domain.repository.OnboardingRepository
 
 class OnboardingRepositoryImpl(
     private val sharedPreferences: SharedPreferences
-) : OnboardingRepository {
+) : com.mkiperszmid.onboarding_domain.repository.OnboardingRepository {
 
     companion object {
         private const val HAS_SEEN_ONBOARDING = "has_seen_onboarding"

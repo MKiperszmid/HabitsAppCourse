@@ -10,8 +10,7 @@ import com.mkiperszmid.habitsappcourse.authentication.presentation.login.LoginSc
 import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.SignupScreen
 import com.mkiperszmid.habitsappcourse.home.presentation.detail.DetailScreen
 import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeScreen
-import com.mkiperszmid.habitsappcourse.onboarding.presentation.OnboardingScreen
-import com.mkiperszmid.settings_presentation.SettingsScreen
+import com.mkiperszmid.onboarding_presentation.OnboardingScreen
 
 @Composable
 fun NavigationHost(
@@ -21,7 +20,7 @@ fun NavigationHost(
 ) {
     NavHost(navController = navHostController, startDestination = startDestination.route) {
         composable(NavigationRoute.Onboarding.route) {
-            OnboardingScreen(
+            com.mkiperszmid.onboarding_presentation.OnboardingScreen(
                 onFinish = {
                     navHostController.popBackStack()
                     navHostController.navigate(NavigationRoute.Login.route)

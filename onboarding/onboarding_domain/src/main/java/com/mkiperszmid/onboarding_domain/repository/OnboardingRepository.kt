@@ -1,4 +1,4 @@
-package com.mkiperszmid.habitsappcourse.onboarding.domain.repository
+package com.mkiperszmid.onboarding_domain.repository
 
 interface OnboardingRepository {
     fun hasSeenOnboarding(): Boolean

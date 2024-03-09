@@ -1,10 +1,9 @@
-package com.mkiperszmid.habitsappcourse.onboarding.presentation
+package com.mkiperszmid.onboarding_presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.mkiperszmid.habitsappcourse.R
-import com.mkiperszmid.habitsappcourse.onboarding.presentation.components.OnboardingPager
+import com.mkiperszmid.onboarding_presentation.components.OnboardingPager
 
 @Composable
 fun OnboardingScreen(

@@ -7,14 +7,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.GetUserIdUseCase
 import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.LogoutUseCase
-import com.mkiperszmid.habitsappcourse.onboarding.domain.usecase.HasSeenOnboardingUseCase
+import com.mkiperszmid.onboarding_domain.usecase.HasSeenOnboardingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val hasSeenOnboardingUseCase: HasSeenOnboardingUseCase,
+    private val hasSeenOnboardingUseCase: com.mkiperszmid.onboarding_domain.usecase.HasSeenOnboardingUseCase,
     private val getUserIdUseCase: GetUserIdUseCase,
     private val logoutUseCase: LogoutUseCase
 ) : ViewModel() {

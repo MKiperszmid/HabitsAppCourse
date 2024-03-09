@@ -1,4 +1,4 @@
-package com.mkiperszmid.habitsappcourse.onboarding.presentation
+package com.mkiperszmid.onboarding_presentation
 
 import androidx.annotation.DrawableRes
 

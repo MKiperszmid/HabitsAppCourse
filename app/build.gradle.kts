@@ -54,6 +54,7 @@ dependencies {
     // Get day of week api 25 or lower
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 
+    // Compose Dialogs
     implementation(libs.core)
     implementation(libs.clock)
 

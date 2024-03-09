@@ -11,7 +11,7 @@ import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.Signup
 import com.mkiperszmid.habitsappcourse.home.presentation.detail.DetailScreen
 import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeScreen
 import com.mkiperszmid.habitsappcourse.onboarding.presentation.OnboardingScreen
-import com.mkiperszmid.habitsappcourse.settings.presentation.SettingsScreen
+import com.mkiperszmid.settings_presentation.SettingsScreen
 
 @Composable
 fun NavigationHost(
@@ -77,7 +77,7 @@ fun NavigationHost(
         }
 
         composable(NavigationRoute.Settings.route) {
-            SettingsScreen(
+            com.mkiperszmid.settings_presentation.SettingsScreen(
                 onBack = {
                     navHostController.popBackStack()
                 },

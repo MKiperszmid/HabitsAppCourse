@@ -67,6 +67,7 @@ dependencies {
 
     implementation(project(":core:core_presentation"))
     implementation(project(":core:core_data"))
+    implementation(project(":settings:settings_presentation"))
     //Get day of week api 25 or lower
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 

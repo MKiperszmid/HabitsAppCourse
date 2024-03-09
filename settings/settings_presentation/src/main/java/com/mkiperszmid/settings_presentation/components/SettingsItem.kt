@@ -1,4 +1,4 @@
-package com.mkiperszmid.habitsappcourse.settings.presentation.components
+package com.mkiperszmid.settings_presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

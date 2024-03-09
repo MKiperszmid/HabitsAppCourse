@@ -30,9 +30,9 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".home.data.alarm.AlarmReceiver" />
+        <receiver android:name="com.mkiperszmid.home_data.alarm.AlarmReceiver" />
         <receiver
-            android:name=".home.data.startup.BootReceiver"
+            android:name="com.mkiperszmid.home_data.startup.BootReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

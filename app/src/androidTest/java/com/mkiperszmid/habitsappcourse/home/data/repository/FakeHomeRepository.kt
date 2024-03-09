@@ -1,7 +1,7 @@
 package com.mkiperszmid.habitsappcourse.home.data.repository
 
-import com.mkiperszmid.habitsappcourse.home.domain.models.Habit
-import com.mkiperszmid.habitsappcourse.home.domain.repository.HomeRepository
+import com.mkiperszmid.home_domain.models.Habit
+import com.mkiperszmid.home_domain.repository.HomeRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
 import java.time.ZonedDateTime
 

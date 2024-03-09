@@ -1,6 +1,6 @@
 package com.mkiperszmid.habitsappcourse.authentication.data.repository
 
-import com.mkiperszmid.habitsappcourse.authentication.domain.repository.AuthenticationRepository
+import com.mkiperszmid.authentication_domain.repository.AuthenticationRepository
 
 class FakeAuthenticationRepository : AuthenticationRepository {
     var fakeError = false

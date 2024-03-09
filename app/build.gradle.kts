@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.mkiperszmid.habitsappcourse"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.mkiperszmid.habitsappcourse"
-        minSdk = 24
-        targetSdk = 33
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -30,7 +30,6 @@ android {
         }
     }
     compileOptions {
-        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -41,7 +40,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.2"
+        kotlinCompilerExtensionVersion = libs.versions.composeVersion.get()
     }
     packagingOptions {
         resources {
@@ -51,21 +50,6 @@ android {
 }
 
 dependencies {
-    constraints {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
-            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
-        }
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
-            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
-        }
-    }
-
-    // Get day of week api 25 or lower
-    coreLibraryDesugaring(libs.desugar.jdk.libs)
-
-    implementation(libs.core)
-    implementation(libs.clock)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -76,41 +60,29 @@ dependencies {
     // Compose Navigation
     implementation(libs.androidx.navigation.compose)
 
-    // Firebase
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.analytics.ktx)
-    implementation(libs.firebase.auth.ktx)
-    implementation(libs.play.services.auth)
-
     // Dagger Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
     kapt(libs.androidx.hilt.compiler)
 
-    // Coil
-    implementation(libs.coil.compose)
-
-    // Pager
-    implementation(libs.accompanist.pager)
-    implementation(libs.accompanist.pager.indicators)
-
-    // Permissions
-    implementation(libs.accompanist.permissions)
-
-    // Room
-    implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.runtime)
-
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.converter.moshi)
-    implementation(libs.logging.interceptor)
-
     // WorkManager
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.hilt.work)
+
+    // Modules
+    implementation(project(":authentication:authentication_presentation"))
+    implementation(project(":authentication:authentication_data"))
+    implementation(project(":authentication:authentication_domain"))
+    implementation(project(":core:core_presentation"))
+    implementation(project(":core:core_data"))
+    implementation(project(":home:home_presentation"))
+    implementation(project(":home:home_data"))
+    implementation(project(":home:home_domain"))
+    implementation(project(":onboarding:onboarding_presentation"))
+    implementation(project(":onboarding:onboarding_data"))
+    implementation(project(":onboarding:onboarding_domain"))
+    implementation(project(":settings:settings_presentation"))
 
     // Testing
     testImplementation(libs.junit)

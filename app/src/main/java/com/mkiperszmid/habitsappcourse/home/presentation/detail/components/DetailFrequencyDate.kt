@@ -17,7 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitCheckbox
+import com.mkiperszmid.core_presentation.HabitCheckbox
 import java.time.DayOfWeek
 
 @Composable
@@ -42,7 +42,7 @@ fun DetailFrequencyDate(
             fontSize = 10.sp
         )
         Spacer(modifier = Modifier.height(8.dp))
-        HabitCheckbox(
+        com.mkiperszmid.core_presentation.HabitCheckbox(
             isChecked = isChecked,
             onCheckedChange = onCheckedChange,
             modifier = Modifier.semantics { contentDescription = date.name }

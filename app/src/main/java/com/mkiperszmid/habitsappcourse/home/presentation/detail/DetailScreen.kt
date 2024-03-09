@@ -18,7 +18,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.maxkeppeler.sheets.clock.ClockDialog
 import com.maxkeppeler.sheets.clock.models.ClockConfig
 import com.maxkeppeler.sheets.clock.models.ClockSelection
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitTextfield
+import com.mkiperszmid.core_presentation.HabitTextfield
 import com.mkiperszmid.habitsappcourse.home.presentation.detail.components.DetailFrequency
 import com.mkiperszmid.habitsappcourse.home.presentation.detail.components.DetailReminder
 import java.time.LocalTime
@@ -79,7 +79,7 @@ fun DetailScreen(
             modifier = Modifier.fillMaxSize().padding(it).padding(horizontal = 20.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            HabitTextfield(
+            com.mkiperszmid.core_presentation.HabitTextfield(
                 value = state.habitName,
                 onValueChange = { viewModel.onEvent(DetailEvent.NameChange(it)) },
                 placeholder = "New habit",

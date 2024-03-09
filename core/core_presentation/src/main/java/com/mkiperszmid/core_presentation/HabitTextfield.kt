@@ -1,4 +1,4 @@
-package com.mkiperszmid.habitsappcourse.core.presentation
+package com.mkiperszmid.core_presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

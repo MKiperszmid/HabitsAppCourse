@@ -1,4 +1,4 @@
-package com.mkiperszmid.habitsappcourse.core.di
+package com.mkiperszmid.core_data.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

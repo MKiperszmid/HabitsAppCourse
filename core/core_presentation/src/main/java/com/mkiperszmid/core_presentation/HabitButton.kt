@@ -1,4 +1,4 @@
-package com.mkiperszmid.habitsappcourse.core.presentation
+package com.mkiperszmid.core_presentation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape

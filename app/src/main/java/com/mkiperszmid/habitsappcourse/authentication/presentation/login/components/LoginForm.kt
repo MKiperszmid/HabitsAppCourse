@@ -25,9 +25,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mkiperszmid.habitsappcourse.authentication.presentation.login.LoginEvent
 import com.mkiperszmid.habitsappcourse.authentication.presentation.login.LoginState
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitButton
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitPasswordTextfield
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitTextfield
+import com.mkiperszmid.core_presentation.HabitButton
+import com.mkiperszmid.core_presentation.HabitPasswordTextfield
+import com.mkiperszmid.core_presentation.HabitTextfield
 
 @Composable
 fun LoginForm(
@@ -53,12 +53,13 @@ fun LoginForm(
                 modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
                 color = MaterialTheme.colorScheme.background
             )
-            HabitTextfield(
+            com.mkiperszmid.core_presentation.HabitTextfield(
                 value = state.email,
                 onValueChange = { onEvent(LoginEvent.EmailChange(it)) },
                 placeholder = "Email",
                 contentDescription = "Enter email",
-                modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp).padding(horizontal = 20.dp),
+                modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp)
+                    .padding(horizontal = 20.dp),
                 leadingIcon = Icons.Outlined.Email,
                 keyboardOptions = KeyboardOptions(
                     autoCorrect = false,
@@ -72,11 +73,12 @@ fun LoginForm(
                 isEnabled = !state.isLoading
             )
 
-            HabitPasswordTextfield(
+            com.mkiperszmid.core_presentation.HabitPasswordTextfield(
                 value = state.password,
                 onValueChange = { onEvent(LoginEvent.PasswordChange(it)) },
                 contentDescription = "Enter password",
-                modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp).padding(horizontal = 20.dp),
+                modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp)
+                    .padding(horizontal = 20.dp),
                 errorMessage = state.passwordError,
                 isEnabled = !state.isLoading,
                 keyboardOptions = KeyboardOptions(
@@ -89,7 +91,7 @@ fun LoginForm(
                     onEvent(LoginEvent.Login)
                 })
             )
-            HabitButton(
+            com.mkiperszmid.core_presentation.HabitButton(
                 text = "Login",
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
                 isEnabled = !state.isLoading

@@ -20,8 +20,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitButton
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitTitle
+import com.mkiperszmid.core_presentation.HabitButton
+import com.mkiperszmid.core_presentation.HabitTitle
 import com.mkiperszmid.habitsappcourse.onboarding.presentation.OnboardingPagerInformation
 import kotlinx.coroutines.launch
 
@@ -44,7 +44,7 @@ fun OnboardingPager(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Spacer(modifier = Modifier.height(32.dp))
-                HabitTitle(information.title)
+                com.mkiperszmid.core_presentation.HabitTitle(information.title)
                 Spacer(modifier = Modifier.height(32.dp))
                 Image(
                     painter = painterResource(id = information.image),
@@ -70,7 +70,10 @@ fun OnboardingPager(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             if (pagerState.currentPage == pages.lastIndex) {
-                HabitButton(text = "Get Started", modifier = Modifier.fillMaxWidth()) {
+                com.mkiperszmid.core_presentation.HabitButton(
+                    text = "Get Started",
+                    modifier = Modifier.fillMaxWidth()
+                ) {
                     onFinish()
                 }
             } else {

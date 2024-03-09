@@ -23,10 +23,10 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.SignupEvent
 import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.SignupState
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitButton
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitPasswordTextfield
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitTextfield
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitTitle
+import com.mkiperszmid.core_presentation.HabitButton
+import com.mkiperszmid.core_presentation.HabitPasswordTextfield
+import com.mkiperszmid.core_presentation.HabitTextfield
+import com.mkiperszmid.core_presentation.HabitTitle
 
 @Composable
 fun SignupForm(
@@ -37,9 +37,9 @@ fun SignupForm(
     val focusManager = LocalFocusManager.current
 
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-        HabitTitle(title = "Create your account")
+        com.mkiperszmid.core_presentation.HabitTitle(title = "Create your account")
         Spacer(modifier = Modifier.height(32.dp))
-        HabitTextfield(
+        com.mkiperszmid.core_presentation.HabitTextfield(
             value = state.email,
             onValueChange = { onEvent(SignupEvent.EmailChange(it)) },
             placeholder = "Email",
@@ -58,7 +58,7 @@ fun SignupForm(
             isEnabled = !state.isLoading,
             backgroundColor = Color.White
         )
-        HabitPasswordTextfield(
+        com.mkiperszmid.core_presentation.HabitPasswordTextfield(
             value = state.password,
             onValueChange = { onEvent(SignupEvent.PasswordChange(it)) },
             contentDescription = "Enter password",
@@ -77,7 +77,7 @@ fun SignupForm(
             backgroundColor = Color.White
         )
         Spacer(modifier = Modifier.height(12.dp))
-        HabitButton(
+        com.mkiperszmid.core_presentation.HabitButton(
             text = "Create Account",
             modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
             isEnabled = !state.isLoading

@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitCheckbox
+import com.mkiperszmid.core_presentation.HabitCheckbox
 import com.mkiperszmid.habitsappcourse.home.domain.models.Habit
 import java.time.LocalDate
 

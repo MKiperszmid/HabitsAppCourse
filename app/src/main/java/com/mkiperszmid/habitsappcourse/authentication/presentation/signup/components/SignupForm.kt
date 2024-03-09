@@ -23,10 +23,10 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.SignupEvent
 import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.SignupState
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitButton
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitPasswordTextfield
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitTextfield
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitTitle
+import com.mkiperszmid.core_presentation.HabitButton
+import com.mkiperszmid.core_presentation.HabitPasswordTextfield
+import com.mkiperszmid.core_presentation.HabitTextfield
+import com.mkiperszmid.core_presentation.HabitTitle
 
 @Composable
 fun SignupForm(

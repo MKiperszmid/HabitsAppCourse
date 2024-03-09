@@ -16,7 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mkiperszmid.habitsappcourse.R
 import com.mkiperszmid.habitsappcourse.authentication.presentation.login.components.LoginForm
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitTitle
+import com.mkiperszmid.core_presentation.HabitTitle
 
 @Composable
 fun LoginScreen(

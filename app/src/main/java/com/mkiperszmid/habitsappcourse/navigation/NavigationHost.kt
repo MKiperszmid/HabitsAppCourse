@@ -10,7 +10,7 @@ import com.mkiperszmid.habitsappcourse.authentication.presentation.login.LoginSc
 import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.SignupScreen
 import com.mkiperszmid.habitsappcourse.home.presentation.detail.DetailScreen
 import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeScreen
-import com.mkiperszmid.habitsappcourse.onboarding.presentation.OnboardingScreen
+import com.mkiperszmid.onboarding_presentation.OnboardingScreen
 import com.mkiperszmid.settings_presentation.SettingsScreen
 
 @Composable

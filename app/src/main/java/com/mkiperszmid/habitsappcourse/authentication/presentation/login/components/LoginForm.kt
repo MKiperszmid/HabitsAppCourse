@@ -25,9 +25,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mkiperszmid.habitsappcourse.authentication.presentation.login.LoginEvent
 import com.mkiperszmid.habitsappcourse.authentication.presentation.login.LoginState
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitButton
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitPasswordTextfield
-import com.mkiperszmid.habitsappcourse.core.presentation.HabitTextfield
+import com.mkiperszmid.core_presentation.HabitButton
+import com.mkiperszmid.core_presentation.HabitPasswordTextfield
+import com.mkiperszmid.core_presentation.HabitTextfield
 
 @Composable
 fun LoginForm(

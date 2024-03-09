@@ -81,13 +81,6 @@ dependencies {
     //Get day of week api 25 or lower
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.activity.compose)
-    implementation(libs.ui)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
     // Compose Navigation
     implementation(libs.navigation.compose)
 

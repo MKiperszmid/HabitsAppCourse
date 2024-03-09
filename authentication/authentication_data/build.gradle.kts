@@ -36,11 +36,8 @@ android {
 
 dependencies {
 
-    implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.androidx.hilt.compiler)
-
 
     // Firebase
     implementation(platform(libs.firebase.bom))
@@ -49,11 +46,8 @@ dependencies {
     implementation(libs.play.services.auth)
 
     implementation(project(":authentication:authentication_domain"))
+    implementation(project(":core:core_data"))
 
-    implementation(libs.core.ktx)
-    implementation(platform(libs.kotlin.bom))
-    implementation(libs.appcompat)
-    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

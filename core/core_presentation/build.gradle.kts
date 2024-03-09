@@ -41,10 +41,12 @@ android {
 
 dependencies {
 
-    implementation(libs.activity.compose)
-    implementation(libs.ui)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    api(libs.core.ktx)
+    api(libs.lifecycle.runtime.ktx)
+    api(libs.activity.compose)
+    api(libs.ui)
+    api(libs.ui.tooling.preview)
+    api(libs.androidx.material3)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

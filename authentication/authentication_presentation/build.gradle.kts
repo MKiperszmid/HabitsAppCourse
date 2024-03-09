@@ -51,11 +51,6 @@ dependencies {
     implementation(project(":core:core_presentation"))
     implementation(project(":core:core_data"))
 
-    implementation(libs.activity.compose)
-    implementation(libs.ui)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

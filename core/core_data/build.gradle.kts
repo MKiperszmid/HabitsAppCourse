@@ -36,14 +36,14 @@ android {
 
 dependencies {
 
-    implementation(libs.hilt.android)
+    api(libs.hilt.android)
     kapt(libs.hilt.compiler)
     kapt(libs.androidx.hilt.compiler)
 
-    implementation(libs.core.ktx)
-    implementation(platform(libs.kotlin.bom))
-    implementation(libs.appcompat)
-    implementation(libs.material)
+    api(libs.core.ktx)
+    api(platform(libs.kotlin.bom))
+    api(libs.appcompat)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

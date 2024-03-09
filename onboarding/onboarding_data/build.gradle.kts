@@ -38,14 +38,11 @@ dependencies {
 
     implementation(project(":onboarding:onboarding_domain"))
 
-    implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     kapt(libs.androidx.hilt.compiler)
 
-    implementation(libs.core.ktx)
-    implementation(platform(libs.kotlin.bom))
-    implementation(libs.appcompat)
-    implementation(libs.material)
+    implementation(project(":core:core_data"))
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

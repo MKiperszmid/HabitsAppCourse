@@ -6,8 +6,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.mkiperszmid.habitsappcourse.authentication.presentation.login.LoginScreen
-import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.SignupScreen
+import com.mkiperszmid.authentication_presentation.login.LoginScreen
+import com.mkiperszmid.authentication_presentation.signup.SignupScreen
 import com.mkiperszmid.habitsappcourse.home.presentation.detail.DetailScreen
 import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeScreen
 import com.mkiperszmid.onboarding_presentation.OnboardingScreen

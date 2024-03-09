@@ -2,6 +2,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -31,9 +32,24 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.composeVersion.get()
+    }
 }
 
 dependencies {
+
+    // Dagger Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+    kapt(libs.androidx.hilt.compiler)
+
+    implementation(project(":authentication:authentication_domain"))
 
     implementation(libs.androidx.core.ktx)
     implementation(platform(libs.kotlin.bom))
@@ -42,4 +58,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.ui)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+
+    implementation(project(":core:core_data"))
+    implementation(project(":core:core_presentation"))
+
 }

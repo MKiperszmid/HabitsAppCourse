@@ -2,6 +2,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -34,6 +35,19 @@ android {
 }
 
 dependencies {
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics.ktx)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.play.services.auth)
+
+    // Dagger Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+    kapt(libs.androidx.hilt.compiler)
+
+    implementation(project(":authentication:authentication_domain"))
 
     implementation(libs.androidx.core.ktx)
     implementation(platform(libs.kotlin.bom))

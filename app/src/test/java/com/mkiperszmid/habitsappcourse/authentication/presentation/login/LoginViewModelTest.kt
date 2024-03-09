@@ -1,11 +1,14 @@
 package com.mkiperszmid.habitsappcourse.authentication.presentation.login
 
+import com.mkiperszmid.authentication_presentation.login.LoginEvent
+import com.mkiperszmid.authentication_presentation.login.LoginState
+import com.mkiperszmid.authentication_presentation.login.LoginViewModel
 import com.mkiperszmid.habitsappcourse.authentication.data.repository.FakeAuthenticationRepository
-import com.mkiperszmid.habitsappcourse.authentication.domain.matcher.EmailMatcher
-import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.LoginUseCases
-import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.LoginWithEmailUseCase
-import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.ValidateEmailUseCase
-import com.mkiperszmid.habitsappcourse.authentication.domain.usecase.ValidatePasswordUseCase
+import com.mkiperszmid.authentication_domain.matcher.EmailMatcher
+import com.mkiperszmid.authentication_domain.usecase.LoginUseCases
+import com.mkiperszmid.authentication_domain.usecase.LoginWithEmailUseCase
+import com.mkiperszmid.authentication_domain.usecase.ValidateEmailUseCase
+import com.mkiperszmid.authentication_domain.usecase.ValidatePasswordUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestScope

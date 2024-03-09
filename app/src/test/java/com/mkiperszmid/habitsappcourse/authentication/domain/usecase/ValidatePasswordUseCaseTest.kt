@@ -1,5 +1,7 @@
 package com.mkiperszmid.habitsappcourse.authentication.domain.usecase
 
+import com.mkiperszmid.authentication_domain.usecase.PasswordResult
+import com.mkiperszmid.authentication_domain.usecase.ValidatePasswordUseCase
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

@@ -4,4 +4,5 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.7.20" apply false
     id("com.google.dagger.hilt.android") version "2.45" apply false
     id("com.google.gms.google-services") version "4.3.15" apply false
+    alias(libs.plugins.org.jetbrains.kotlin.jvm) apply false
 }

@@ -50,21 +50,11 @@ dependencies {
     kapt(libs.androidx.hilt.compiler)
 
     implementation(project(":authentication:authentication_domain"))
+    implementation(project(":core:core_data"))
+    implementation(project(":core:core_presentation"))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(platform(libs.kotlin.bom))
-    implementation(libs.appcompat)
-    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.ui)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
-    implementation(project(":core:core_data"))
-    implementation(project(":core:core_presentation"))
 
 }

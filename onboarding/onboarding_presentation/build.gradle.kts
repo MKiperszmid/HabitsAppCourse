@@ -41,8 +41,8 @@ android {
 }
 
 dependencies {
-
     implementation(project(":core:core_presentation"))
+    implementation(project(":onboarding:onboarding_domain"))
 
     // Dagger Hilt
     implementation(libs.hilt.android)
@@ -54,18 +54,8 @@ dependencies {
     implementation(libs.accompanist.pager)
     implementation(libs.accompanist.pager.indicators)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(platform(libs.kotlin.bom))
-    implementation(libs.appcompat)
-    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.ui)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    implementation(project(":onboarding:onboarding_domain"))
 
 }

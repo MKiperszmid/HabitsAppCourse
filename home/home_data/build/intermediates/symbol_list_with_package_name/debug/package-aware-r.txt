@@ -1,2 +1,0 @@
-com.mkiperszmid.home_data
-drawable notification_icon

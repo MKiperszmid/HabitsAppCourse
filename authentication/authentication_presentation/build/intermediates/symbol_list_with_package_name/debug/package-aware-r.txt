@@ -1,3 +1,0 @@
-com.mkiperszmid.authentication_presentation
-drawable loginbackground
-drawable signup

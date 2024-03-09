@@ -1,2 +1,0 @@
-com.mkiperszmid.home_presentation
-drawable onboarding1

@@ -1,4 +1,4 @@
-package com.mkiperszmid.habitsappcourse.settings.presentation
+package com.example.settings_presentation
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mkiperszmid.habitsappcourse.settings.presentation.components.SettingsItem
+import com.example.settings_presentation.components.SettingsItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

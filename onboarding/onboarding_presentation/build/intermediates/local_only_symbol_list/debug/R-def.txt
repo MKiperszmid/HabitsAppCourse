@@ -1,0 +1,6 @@
+R_DEF: Internal format may change without notice
+local
+drawable onboarding1
+drawable onboarding2
+drawable onboarding3
+drawable onboarding4

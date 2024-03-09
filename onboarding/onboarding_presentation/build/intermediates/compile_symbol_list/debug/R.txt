@@ -1,0 +1,4 @@
+int drawable onboarding1 0x0
+int drawable onboarding2 0x0
+int drawable onboarding3 0x0
+int drawable onboarding4 0x0

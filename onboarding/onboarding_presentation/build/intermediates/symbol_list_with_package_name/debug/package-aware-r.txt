@@ -1,0 +1,5 @@
+com.mkiperszmid.onboarding_presentation
+drawable onboarding1
+drawable onboarding2
+drawable onboarding3
+drawable onboarding4

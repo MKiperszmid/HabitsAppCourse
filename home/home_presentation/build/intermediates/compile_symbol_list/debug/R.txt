@@ -1,0 +1,1 @@
+int drawable onboarding1 0x0

@@ -20,10 +20,10 @@ import java.time.ZonedDateTime
 class HomeRepositoryImpl(
     private val dao: HomeDao,
     private val api: HomeApi,
-    private val alarmHandler: com.mkiperszmid.home_domain.alarm.AlarmHandler,
+    private val alarmHandler: AlarmHandler,
     private val workManager: WorkManager
-) : com.mkiperszmid.home_domain.repository.HomeRepository {
-    override fun getAllHabitsForSelectedDate(date: ZonedDateTime): Flow<List<com.mkiperszmid.home_domain.models.Habit>> {
+) : HomeRepository {
+    override fun getAllHabitsForSelectedDate(date: ZonedDateTime): Flow<List<Habit>> {
         val localFlow = dao.getAllHabitsForSelectedDate(date.toStartOfDateTimestamp())
             .map { it.map { it.toDomain() } }
         val apiFlow = getHabitsFromApi()
@@ -33,19 +33,19 @@ class HomeRepositoryImpl(
         }
     }
 
-    private fun getHabitsFromApi(): Flow<List<com.mkiperszmid.home_domain.models.Habit>> {
+    private fun getHabitsFromApi(): Flow<List<Habit>> {
         return flow {
             resultOf {
                 val habits = api.getAllHabits().toDomain()
                 insertHabits(habits)
             }
-            emit(emptyList<com.mkiperszmid.home_domain.models.Habit>())
+            emit(emptyList<Habit>())
         }.onStart {
             emit(emptyList())
         }
     }
 
-    override suspend fun insertHabit(habit: com.mkiperszmid.home_domain.models.Habit) {
+    override suspend fun insertHabit(habit: Habit) {
         handleAlarm(habit)
         dao.insertHabit(habit.toEntity())
         resultOf {
@@ -55,14 +55,14 @@ class HomeRepositoryImpl(
         }
     }
 
-    private suspend fun insertHabits(habits: List<com.mkiperszmid.home_domain.models.Habit>) {
+    private suspend fun insertHabits(habits: List<Habit>) {
         habits.forEach {
             handleAlarm(it)
             dao.insertHabit(it.toEntity())
         }
     }
 
-    private suspend fun handleAlarm(habit: com.mkiperszmid.home_domain.models.Habit) {
+    private suspend fun handleAlarm(habit: Habit) {
         try {
             val previous = dao.getHabitById(habit.id)
             alarmHandler.cancel(previous.toDomain())
@@ -71,7 +71,7 @@ class HomeRepositoryImpl(
         alarmHandler.setRecurringAlarm(habit)
     }
 
-    override suspend fun getHabitById(id: String): com.mkiperszmid.home_domain.models.Habit {
+    override suspend fun getHabitById(id: String): Habit {
         return dao.getHabitById(id).toDomain()
     }
 

@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    //id("org.jetbrains.kotlin.android")
     kotlin("android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
@@ -8,12 +9,12 @@ plugins {
 
 android {
     namespace = "com.mkiperszmid.habitsappcourse"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.mkiperszmid.habitsappcourse"
-        minSdk = 24
-        targetSdk = 33
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -24,9 +25,12 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -43,9 +47,9 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.3.2"
     }
-    packagingOptions {
+    packaging {
         resources {
-            excludes += listOf("/META-INF/{AL2.0,LGPL2.1}")
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 }
@@ -60,21 +64,25 @@ dependencies {
         }
     }
 
-    // Get day of week api 25 or lower
+
+    implementation(project(":core:core_presentation"))
+    implementation(project(":core:core_data"))
+    implementation(project(":settings:settings_presentation"))
+    implementation(project(":onboarding:onboarding_presentation"))
+    implementation(project(":onboarding:onboarding_domain"))
+    implementation(project(":onboarding:onboarding_data"))
+    implementation(project(":authentication:authentication_data"))
+    implementation(project(":authentication:authentication_domain"))
+    implementation(project(":authentication:authentication_presentation"))
+
+    implementation(project(":home:home_data"))
+    implementation(project(":home:home_domain"))
+    implementation(project(":home:home_presentation"))
+    //Get day of week api 25 or lower
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 
-    implementation(libs.core)
-    implementation(libs.clock)
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.ui)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
     // Compose Navigation
-    implementation(libs.androidx.navigation.compose)
+    implementation(libs.navigation.compose)
 
     // Firebase
     implementation(platform(libs.firebase.bom))
@@ -85,28 +93,11 @@ dependencies {
     // Dagger Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-    implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.androidx.hilt.compiler)
 
     // Coil
     implementation(libs.coil.compose)
-
-    // Pager
-    implementation(libs.accompanist.pager)
-    implementation(libs.accompanist.pager.indicators)
-
-    // Permissions
-    implementation(libs.accompanist.permissions)
-
-    // Room
-    implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.runtime)
-
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.converter.moshi)
-    implementation(libs.logging.interceptor)
 
     // WorkManager
     implementation(libs.androidx.work.runtime.ktx)

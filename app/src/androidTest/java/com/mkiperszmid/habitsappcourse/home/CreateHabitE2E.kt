@@ -17,17 +17,17 @@ import androidx.work.testing.SynchronousExecutor
 import androidx.work.testing.WorkManagerTestInitHelper
 import com.mkiperszmid.habitsappcourse.MainActivity
 import com.mkiperszmid.habitsappcourse.home.data.repository.FakeHomeRepository
-import com.mkiperszmid.habitsappcourse.home.domain.detail.usecase.DetailUseCases
-import com.mkiperszmid.habitsappcourse.home.domain.detail.usecase.GetHabitByIdUseCase
-import com.mkiperszmid.habitsappcourse.home.domain.detail.usecase.InsertHabitUseCase
-import com.mkiperszmid.habitsappcourse.home.domain.home.usecase.CompleteHabitUseCase
-import com.mkiperszmid.habitsappcourse.home.domain.home.usecase.GetHabitsForDateUseCase
-import com.mkiperszmid.habitsappcourse.home.domain.home.usecase.HomeUseCases
-import com.mkiperszmid.habitsappcourse.home.domain.home.usecase.SyncHabitUseCase
-import com.mkiperszmid.habitsappcourse.home.presentation.detail.DetailScreen
-import com.mkiperszmid.habitsappcourse.home.presentation.detail.DetailViewModel
-import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeScreen
-import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeViewModel
+import com.mkiperszmid.home_domain.detail.usecase.DetailUseCases
+import com.mkiperszmid.home_domain.detail.usecase.GetHabitByIdUseCase
+import com.mkiperszmid.home_domain.detail.usecase.InsertHabitUseCase
+import com.mkiperszmid.home_domain.home.usecase.CompleteHabitUseCase
+import com.mkiperszmid.home_domain.home.usecase.GetHabitsForDateUseCase
+import com.mkiperszmid.home_domain.home.usecase.HomeUseCases
+import com.mkiperszmid.home_domain.home.usecase.SyncHabitUseCase
+import com.mkiperszmid.home_presentation.detail.DetailScreen
+import com.mkiperszmid.home_presentation.detail.DetailViewModel
+import com.mkiperszmid.home_presentation.home.HomeScreen
+import com.mkiperszmid.home_presentation.home.HomeViewModel
 import com.mkiperszmid.habitsappcourse.navigation.NavigationRoute
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -46,8 +46,8 @@ class CreateHabitE2E {
     val composeRule = createAndroidComposeRule<MainActivity>()
 
     private lateinit var homeRepository: FakeHomeRepository
-    private lateinit var homeViewModel: HomeViewModel
-    private lateinit var detailViewModel: DetailViewModel
+    private lateinit var homeViewModel: com.mkiperszmid.home_presentation.home.HomeViewModel
+    private lateinit var detailViewModel: com.mkiperszmid.home_presentation.detail.DetailViewModel
     private lateinit var navController: NavHostController
 
     @Before
@@ -58,24 +58,37 @@ class CreateHabitE2E {
             .build()
         WorkManagerTestInitHelper.initializeTestWorkManager(context, config)
         homeRepository = FakeHomeRepository()
-        val usecases = HomeUseCases(
-            completeHabitUseCase = CompleteHabitUseCase(homeRepository),
-            getHabitsForDateUseCase = GetHabitsForDateUseCase(homeRepository),
-            syncHabitUseCase = SyncHabitUseCase(homeRepository)
+        val usecases = com.mkiperszmid.home_domain.home.usecase.HomeUseCases(
+            completeHabitUseCase = com.mkiperszmid.home_domain.home.usecase.CompleteHabitUseCase(
+                homeRepository
+            ),
+            getHabitsForDateUseCase = com.mkiperszmid.home_domain.home.usecase.GetHabitsForDateUseCase(
+                homeRepository
+            ),
+            syncHabitUseCase = com.mkiperszmid.home_domain.home.usecase.SyncHabitUseCase(
+                homeRepository
+            )
         )
-        homeViewModel = HomeViewModel(usecases)
+        homeViewModel = com.mkiperszmid.home_presentation.home.HomeViewModel(usecases)
 
-        val detailUseCase = DetailUseCases(
-            getHabitByIdUseCase = GetHabitByIdUseCase(homeRepository),
-            insertHabitUseCase = InsertHabitUseCase(homeRepository)
+        val detailUseCase = com.mkiperszmid.home_domain.detail.usecase.DetailUseCases(
+            getHabitByIdUseCase = com.mkiperszmid.home_domain.detail.usecase.GetHabitByIdUseCase(
+                homeRepository
+            ),
+            insertHabitUseCase = com.mkiperszmid.home_domain.detail.usecase.InsertHabitUseCase(
+                homeRepository
+            )
         )
-        detailViewModel = DetailViewModel(SavedStateHandle(), detailUseCase)
+        detailViewModel = com.mkiperszmid.home_presentation.detail.DetailViewModel(
+            SavedStateHandle(),
+            detailUseCase
+        )
 
         composeRule.activity.setContent {
             navController = rememberNavController()
             NavHost(navController = navController, startDestination = NavigationRoute.Home.route) {
                 composable(NavigationRoute.Home.route) {
-                    HomeScreen(
+                    com.mkiperszmid.home_presentation.home.HomeScreen(
                         onNewHabit = {
                             navController.navigate(NavigationRoute.Detail.route)
                         },
@@ -99,7 +112,7 @@ class CreateHabitE2E {
                         }
                     )
                 ) {
-                    DetailScreen(
+                    com.mkiperszmid.home_presentation.detail.DetailScreen(
                         onBack = {
                             navController.popBackStack()
                         },

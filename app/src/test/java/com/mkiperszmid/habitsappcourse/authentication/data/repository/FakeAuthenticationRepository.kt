@@ -1,8 +1,9 @@
 package com.mkiperszmid.habitsappcourse.authentication.data.repository
 
-import com.mkiperszmid.habitsappcourse.authentication.domain.repository.AuthenticationRepository
+import com.mkiperszmid.authentication_domain.repository.AuthenticationRepository
 
-class FakeAuthenticationRepository : AuthenticationRepository {
+class FakeAuthenticationRepository :
+    com.mkiperszmid.authentication_domain.repository.AuthenticationRepository {
     var fakeError = false
     val fakeErrorMessage = "There was a server error!"
     override suspend fun login(email: String, password: String): Result<Unit> {

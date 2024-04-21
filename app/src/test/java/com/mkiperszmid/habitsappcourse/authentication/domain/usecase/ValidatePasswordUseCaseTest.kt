@@ -5,11 +5,12 @@ import org.junit.Before
 import org.junit.Test
 
 class ValidatePasswordUseCaseTest {
-    private lateinit var validatePasswordUseCase: ValidatePasswordUseCase
+    private lateinit var validatePasswordUseCase: com.mkiperszmid.authentication_domain.usecase.ValidatePasswordUseCase
 
     @Before
     fun setup() {
-        validatePasswordUseCase = ValidatePasswordUseCase()
+        validatePasswordUseCase =
+            com.mkiperszmid.authentication_domain.usecase.ValidatePasswordUseCase()
     }
 
     @Test
@@ -18,7 +19,7 @@ class ValidatePasswordUseCaseTest {
         val result = validatePasswordUseCase(input)
 
         assertEquals(
-            PasswordResult.INVALID_LENGTH,
+            com.mkiperszmid.authentication_domain.usecase.PasswordResult.INVALID_LENGTH,
             result
         )
     }
@@ -29,7 +30,7 @@ class ValidatePasswordUseCaseTest {
         val result = validatePasswordUseCase(input)
 
         assertEquals(
-            PasswordResult.INVALID_LOWERCASE,
+            com.mkiperszmid.authentication_domain.usecase.PasswordResult.INVALID_LOWERCASE,
             result
         )
     }
@@ -40,7 +41,7 @@ class ValidatePasswordUseCaseTest {
         val result = validatePasswordUseCase(input)
 
         assertEquals(
-            PasswordResult.INVALID_UPPERCASE,
+            com.mkiperszmid.authentication_domain.usecase.PasswordResult.INVALID_UPPERCASE,
             result
         )
     }
@@ -51,7 +52,7 @@ class ValidatePasswordUseCaseTest {
         val result = validatePasswordUseCase(input)
 
         assertEquals(
-            PasswordResult.INVALID_DIGITS,
+            com.mkiperszmid.authentication_domain.usecase.PasswordResult.INVALID_DIGITS,
             result
         )
     }
@@ -62,7 +63,7 @@ class ValidatePasswordUseCaseTest {
         val result = validatePasswordUseCase(input)
 
         assertEquals(
-            PasswordResult.INVALID_UPPERCASE,
+            com.mkiperszmid.authentication_domain.usecase.PasswordResult.INVALID_UPPERCASE,
             result
         )
     }
@@ -73,7 +74,7 @@ class ValidatePasswordUseCaseTest {
         val result = validatePasswordUseCase(input)
 
         assertEquals(
-            PasswordResult.INVALID_UPPERCASE,
+            com.mkiperszmid.authentication_domain.usecase.PasswordResult.INVALID_UPPERCASE,
             result
         )
     }
@@ -84,7 +85,7 @@ class ValidatePasswordUseCaseTest {
         val result = validatePasswordUseCase(input)
 
         assertEquals(
-            PasswordResult.VALID,
+            com.mkiperszmid.authentication_domain.usecase.PasswordResult.VALID,
             result
         )
     }

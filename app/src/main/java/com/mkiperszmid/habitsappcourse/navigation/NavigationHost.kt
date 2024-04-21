@@ -6,12 +6,11 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.mkiperszmid.habitsappcourse.authentication.presentation.login.LoginScreen
-import com.mkiperszmid.habitsappcourse.authentication.presentation.signup.SignupScreen
-import com.mkiperszmid.habitsappcourse.home.presentation.detail.DetailScreen
-import com.mkiperszmid.habitsappcourse.home.presentation.home.HomeScreen
-import com.mkiperszmid.habitsappcourse.onboarding.presentation.OnboardingScreen
-import com.mkiperszmid.habitsappcourse.settings.presentation.SettingsScreen
+import com.mkiperszmid.authentication_presentation.login.LoginScreen
+import com.mkiperszmid.authentication_presentation.signup.SignupScreen
+import com.mkiperszmid.home_presentation.detail.DetailScreen
+import com.mkiperszmid.home_presentation.home.HomeScreen
+import com.mkiperszmid.onboarding_presentation.OnboardingScreen
 
 @Composable
 fun NavigationHost(
@@ -21,7 +20,7 @@ fun NavigationHost(
 ) {
     NavHost(navController = navHostController, startDestination = startDestination.route) {
         composable(NavigationRoute.Onboarding.route) {
-            OnboardingScreen(
+            com.mkiperszmid.onboarding_presentation.OnboardingScreen(
                 onFinish = {
                     navHostController.popBackStack()
                     navHostController.navigate(NavigationRoute.Login.route)
@@ -29,34 +28,34 @@ fun NavigationHost(
             )
         }
         composable(NavigationRoute.Login.route) {
-            LoginScreen(onLogin = {
+            com.mkiperszmid.authentication_presentation.login.LoginScreen(onLogin = {
                 navHostController.popBackStack()
                 navHostController.navigate(NavigationRoute.Home.route)
             }, onSignUp = {
-                    navHostController.navigate(NavigationRoute.Signup.route)
-                })
+                navHostController.navigate(NavigationRoute.Signup.route)
+            })
         }
 
         composable(NavigationRoute.Signup.route) {
-            SignupScreen(onSignIn = {
+            com.mkiperszmid.authentication_presentation.signup.SignupScreen(onSignIn = {
                 navHostController.navigate(NavigationRoute.Home.route) {
                     popUpTo(navHostController.graph.id) {
                         inclusive = true
                     }
                 }
             }, onLogin = {
-                    navHostController.popBackStack()
-                })
+                navHostController.popBackStack()
+            })
         }
 
         composable(NavigationRoute.Home.route) {
-            HomeScreen(onNewHabit = {
+            com.mkiperszmid.home_presentation.home.HomeScreen(onNewHabit = {
                 navHostController.navigate(NavigationRoute.Detail.route)
             }, onSettings = {
-                    navHostController.navigate(NavigationRoute.Settings.route)
-                }, onEditHabit = {
-                    navHostController.navigate(NavigationRoute.Detail.route + "?habitId=$it")
-                })
+                navHostController.navigate(NavigationRoute.Settings.route)
+            }, onEditHabit = {
+                navHostController.navigate(NavigationRoute.Detail.route + "?habitId=$it")
+            })
         }
 
         composable(
@@ -69,15 +68,15 @@ fun NavigationHost(
                 }
             )
         ) {
-            DetailScreen(onBack = {
+            com.mkiperszmid.home_presentation.detail.DetailScreen(onBack = {
                 navHostController.popBackStack()
             }, onSave = {
-                    navHostController.popBackStack()
-                })
+                navHostController.popBackStack()
+            })
         }
 
         composable(NavigationRoute.Settings.route) {
-            SettingsScreen(
+            com.mkiperszmid.settings_presentation.SettingsScreen(
                 onBack = {
                     navHostController.popBackStack()
                 },

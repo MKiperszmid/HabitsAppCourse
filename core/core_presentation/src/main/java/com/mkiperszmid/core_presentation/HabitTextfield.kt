@@ -75,7 +75,8 @@ fun HabitTextfield(
         OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .semantics { this.contentDescription = contentDescription },
             leadingIcon = if (leadingIcon == null) null else {
                 {
@@ -104,18 +105,22 @@ fun HabitTextfield(
             placeholder = { Text(text = placeholder) },
             singleLine = true,
             shape = RoundedCornerShape(12.dp),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                textColor = MaterialTheme.colorScheme.primary,
-                containerColor = backgroundColor,
-                focusedBorderColor = Color.Transparent,
-                unfocusedBorderColor = Color.Transparent,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedTextColor = MaterialTheme.colorScheme.primary,
+                unfocusedTextColor = MaterialTheme.colorScheme.primary,
+                focusedContainerColor = backgroundColor,
+                unfocusedContainerColor = backgroundColor,
                 focusedLeadingIconColor = MaterialTheme.colorScheme.primary,
-                placeholderColor = MaterialTheme.colorScheme.tertiary.copy(
+                unfocusedLeadingIconColor = MaterialTheme.colorScheme.primary,
+                unfocusedPlaceholderColor = MaterialTheme.colorScheme.tertiary.copy(
                     alpha = 0.5f
                 ),
-                unfocusedLeadingIconColor = MaterialTheme.colorScheme.tertiary.copy(
+                focusedPlaceholderColor = MaterialTheme.colorScheme.tertiary.copy(
                     alpha = 0.5f
-                )
+                ),
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = Color.Transparent
+
             ),
             visualTransformation = if (isPassword && hidePassword) PasswordVisualTransformation() else VisualTransformation.None,
             keyboardOptions = keyboardOptions,

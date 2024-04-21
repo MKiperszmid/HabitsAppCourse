@@ -38,4 +38,4 @@ Home             |  Detail
 - Abre el proyecto en Android Studio.
 - Configura Firebase Authentication en la consola de Firebase y agrega las credenciales necesarias en el proyecto.
 - Configura tu API.
-- Ejecuta la aplicación.
+- Ejecuta la aplicación..

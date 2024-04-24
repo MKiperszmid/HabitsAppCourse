@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mkiperszmid.authentication_domain.usecase.LoginUseCases
 import com.mkiperszmid.authentication_presentation.util.PasswordErrorParser
-import com.mkiperszmid.core_data.di.IoDispatcher
+import com.mkiperszmid.authentication_presentation.di.IoDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch

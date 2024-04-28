@@ -49,7 +49,6 @@ dependencies {
 
     implementation(project(":authentication:authentication_domain"))
     implementation(project(":core:core_presentation"))
-    implementation(project(":core:core_data"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
